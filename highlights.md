@@ -5,6 +5,7 @@ permalink: /highlights/
 ---
 
 # Ping posts
+
   Example
 
 # Recently added
