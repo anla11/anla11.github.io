@@ -1,8 +1,11 @@
 ---
 layout: page
 title: About
-permalink: _pages/about/
+permalink: /_pages/about/
 ---
+
+## Description
+
 
 ### Contact me
 
