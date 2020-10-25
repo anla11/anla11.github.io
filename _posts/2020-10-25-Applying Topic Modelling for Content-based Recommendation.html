@@ -214,7 +214,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
@@ -229,7 +229,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -265,7 +265,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="1.-Dataset"><strong>1. Dataset</strong><a class="anchor-link" href="#1.-Dataset">&#182;</a></h1>
+<h1 id="1.-Dataset"><strong>1. Dataset</strong><a class="anchor-link" href="#1.-Dataset"></a></h1>
 </div>
 </div>
 </div>
@@ -279,7 +279,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datapath</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
@@ -296,7 +296,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -393,13 +393,13 @@ title: Applying Topic Modelling for Content-based Recommendation
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Formating"><em>Formating</em><a class="anchor-link" href="#Formating">&#182;</a></h2>
+<h2 id="Formating"><em>Formating</em><a class="anchor-link" href="#Formating"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -415,7 +415,7 @@ title: Applying Topic Modelling for Content-based Recommendation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_full</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -460,13 +460,13 @@ memory usage: 28.9 MB
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Check-key-of-DataFrame">Check key of DataFrame<a class="anchor-link" href="#Check-key-of-DataFrame">&#182;</a></h2>
+<h2 id="Check-key-of-DataFrame">Check key of DataFrame<a class="anchor-link" href="#Check-key-of-DataFrame"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_full</span><span class="p">[[</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">,</span> <span class="s1">&#39;StockCode&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()))</span>
@@ -494,7 +494,7 @@ memory usage: 28.9 MB
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -511,7 +511,7 @@ memory usage: 28.9 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The number of unique items by Description: &#39;</span><span class="p">,</span> <span class="n">data_full</span><span class="o">.</span><span class="n">Description</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
@@ -545,13 +545,13 @@ The number of unique items by StockCode:  4070
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Prepare-Train-Test">Prepare Train-Test<a class="anchor-link" href="#Prepare-Train-Test">&#182;</a></h2>
+<h2 id="Prepare-Train-Test">Prepare Train-Test<a class="anchor-link" href="#Prepare-Train-Test"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_full</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -567,7 +567,7 @@ The number of unique items by StockCode:  4070
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -663,7 +663,7 @@ The number of unique items by StockCode:  4070
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -696,7 +696,7 @@ The number of unique items by StockCode:  4070
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -792,7 +792,7 @@ The number of unique items by StockCode:  4070
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Number of purchases in full data: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_full</span><span class="p">))</span>
@@ -850,7 +850,7 @@ Number of Invoices in testing data:  2474
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-Exploring-data"><strong>2. Exploring data</strong><a class="anchor-link" href="#2.-Exploring-data">&#182;</a></h1><p>This section provides both overview and detaily analysis of all information, except Description (discussed later in Secion 3). If you want to focus on LDA and its impact, this section could be skipped.</p>
+<h1 id="2.-Exploring-data"><strong>2. Exploring data</strong><a class="anchor-link" href="#2.-Exploring-data"></a></h1><p>This section provides both overview and detaily analysis of all information, except Description (discussed later in Secion 3). If you want to focus on LDA and its impact, this section could be skipped.</p>
 <p>The target of this step is considering all information to check whether feature could be extracted.</p>
 <p>In the end of this part, you can see that there is not too much information could be exploited, so that feature extraction with NLP is the only hope for content-based recommendation.</p>
 <p><strong>2.1 Objects of purchases</strong></p>
@@ -872,13 +872,13 @@ Number of Invoices in testing data:  2474
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions">&#182;</a></h3>
+<h3 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_key</span><span class="p">,</span> <span class="n">user_key</span><span class="p">,</span> <span class="n">full_key</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;CustomerID&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">,</span> <span class="s1">&#39;StockCode&#39;</span><span class="p">,</span> <span class="s1">&#39;CustomerID&#39;</span><span class="p">,</span> <span class="s1">&#39;UnitPrice&#39;</span><span class="p">,</span> <span class="s1">&#39;Quantity&#39;</span><span class="p">]</span>
@@ -920,7 +920,7 @@ Number of Invoices in testing data:  2474
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.1-Overview-Objects">2.1 Overview Objects<a class="anchor-link" href="#2.1-Overview-Objects">&#182;</a></h2>
+<h2 id="2.1-Overview-Objects">2.1 Overview Objects<a class="anchor-link" href="#2.1-Overview-Objects"></a></h2>
 </div>
 </div>
 </div>
@@ -936,7 +936,7 @@ Number of Invoices in testing data:  2474
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -982,7 +982,7 @@ memory usage: 19.3 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Missing rate of columns: &#39;</span><span class="p">)</span>
@@ -1022,7 +1022,7 @@ memory usage: 19.3 MB
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;The number of unique invoice: &#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
@@ -1079,7 +1079,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;Number of products in Invoices (Invoice Length)&#39;</span>
@@ -1161,7 +1161,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Purchased times of products (product_cnt)&#39;</span><span class="p">)</span>
@@ -1246,7 +1246,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Purchasetimes of users (user_cnt)&#39;</span><span class="p">)</span>
@@ -1330,7 +1330,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">get_user_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1400,7 +1400,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Number of products in invoices of users (Average Invoice length of users)&#39;</span><span class="p">)</span>
@@ -1483,7 +1483,7 @@ The number of unique users/customeres:  3669
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.2-Relationships-between-features">2.2 Relationships between features<a class="anchor-link" href="#2.2-Relationships-between-features">&#182;</a></h2>
+<h2 id="2.2-Relationships-between-features">2.2 Relationships between features<a class="anchor-link" href="#2.2-Relationships-between-features"></a></h2>
 </div>
 </div>
 </div>
@@ -1499,7 +1499,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_cnt</span> <span class="o">=</span> <span class="n">get_usercnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1603,7 +1603,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1673,7 +1673,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1733,7 +1733,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1803,7 +1803,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -1864,7 +1864,7 @@ The number of unique users/customeres:  3669
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.3-Feature-Analysis">2.3 Feature Analysis<a class="anchor-link" href="#2.3-Feature-Analysis">&#182;</a></h2><ul>
+<h2 id="2.3-Feature-Analysis">2.3 Feature Analysis<a class="anchor-link" href="#2.3-Feature-Analysis"></a></h2><ul>
 <li>Country</li>
 <li>Quantity and UnitPrice</li>
 </ul>
@@ -1875,7 +1875,7 @@ The number of unique users/customeres:  3669
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Analysis-difference-between-countries">Analysis difference between countries<a class="anchor-link" href="#Analysis-difference-between-countries">&#182;</a></h3><ul>
+<h3 id="Analysis-difference-between-countries">Analysis difference between countries<a class="anchor-link" href="#Analysis-difference-between-countries"></a></h3><ul>
 <li>There are 38 countries.</li>
 <li>The UK is dominant in the log data, takes 445901 lines, respectively 92.21% data. It also has the highest number of distinct products. </li>
 </ul>
@@ -1886,7 +1886,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Country: &#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
@@ -1939,7 +1939,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1989,7 +1989,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -2040,7 +2040,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -2081,7 +2081,7 @@ The number of unique users/customeres:  3669
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Quantity-and-UnitPrice">Quantity and UnitPrice<a class="anchor-link" href="#Quantity-and-UnitPrice">&#182;</a></h3>
+<h3 id="Quantity-and-UnitPrice">Quantity and UnitPrice<a class="anchor-link" href="#Quantity-and-UnitPrice"></a></h3>
 </div>
 </div>
 </div>
@@ -2097,7 +2097,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;UnitPrice&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2113,7 +2113,7 @@ The number of unique users/customeres:  3669
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -2205,7 +2205,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;UnitPrice&#39;</span><span class="p">]:</span>
@@ -2332,7 +2332,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="o">.</span><span class="n">UnitPrice</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Quantity</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)][[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;UnitPrice&#39;</span><span class="p">]]</span>
@@ -2389,7 +2389,7 @@ The number of unique users/customeres:  3669
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">compare_upvsquan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;StockCode&#39;</span><span class="p">)</span>
@@ -2451,7 +2451,7 @@ mean_quantity and mean_unitprice of StockCode after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">compare_upvsquan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;InvoiceNo&#39;</span><span class="p">)</span>
@@ -2513,7 +2513,7 @@ mean_quantity and mean_unitprice of InvoiceNo after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">compare_upvsquan</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;CustomerID&#39;</span><span class="p">)</span>
@@ -2575,7 +2575,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -2675,7 +2675,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_cnt</span> <span class="o">=</span> <span class="n">get_usercnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -2765,7 +2765,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_productcnt</span> <span class="o">=</span> <span class="n">get_user_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -2855,7 +2855,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_avglen</span> <span class="o">=</span> <span class="n">get_user_invoicelen</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">metrc</span><span class="o">=</span><span class="s1">&#39;avg_invlen&#39;</span><span class="p">)</span>
@@ -2943,7 +2943,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-Pre-processing-and-feature-extraction-for-products-with-NLP"><strong>3. Pre-processing and feature extraction for products with NLP</strong><a class="anchor-link" href="#3.-Pre-processing-and-feature-extraction-for-products-with-NLP">&#182;</a></h1><p>3.1 Preparation</p>
+<h1 id="3.-Pre-processing-and-feature-extraction-for-products-with-NLP"><strong>3. Pre-processing and feature extraction for products with NLP</strong><a class="anchor-link" href="#3.-Pre-processing-and-feature-extraction-for-products-with-NLP"></a></h1><p>3.1 Preparation</p>
 <ul>
 <li>Pre-processing Stock and Description</li>
 <li>Prepare for LDA</li>
@@ -2984,20 +2984,20 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.1-Preparation">3.1 Preparation<a class="anchor-link" href="#3.1-Preparation">&#182;</a></h2>
+<h2 id="3.1-Preparation">3.1 Preparation<a class="anchor-link" href="#3.1-Preparation"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions">&#182;</a></h3>
+<h3 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span> 
@@ -3041,7 +3041,7 @@ mean_quantity and mean_unitprice of CustomerID after applying log Transformation
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install pyLDAvis
@@ -3108,7 +3108,7 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_mapping</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
@@ -3137,7 +3137,7 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="n">lda_model</span><span class="p">):</span>
@@ -3196,13 +3196,13 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Clean-stock-and-description">Clean stock and description<a class="anchor-link" href="#Clean-stock-and-description">&#182;</a></h3>
+<h3 id="Clean-stock-and-description">Clean stock and description<a class="anchor-link" href="#Clean-stock-and-description"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Number of unique StockCode and Description&#39;</span><span class="p">)</span>
@@ -3247,13 +3247,13 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Cases">Cases<a class="anchor-link" href="#Cases">&#182;</a></h4>
+<h4 id="Cases">Cases<a class="anchor-link" href="#Cases"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">StockCode</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;85184C&#39;</span><span class="p">,</span> <span class="s1">&#39;84558A&#39;</span><span class="p">,</span> <span class="s1">&#39;84558a&#39;</span><span class="p">])][[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">,</span> <span class="s1">&#39;Description&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;StockCode&#39;</span><span class="p">)</span>
@@ -3269,7 +3269,7 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3330,7 +3330,7 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">Description</span> <span class="o">==</span> <span class="s1">&#39;3D DOG PICTURE PLAYING CARDS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">StockCode</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -3346,7 +3346,7 @@ Successfully installed funcy-1.14 pyLDAvis-2.1.2
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3365,7 +3365,7 @@ Length: 2, dtype: string</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">StockCode</span><span class="o">==</span><span class="s1">&#39;85184C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">Description</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -3381,7 +3381,7 @@ Length: 2, dtype: string</pre>
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3401,13 +3401,13 @@ Length: 2, dtype: string</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Processing"><strong><em>Processing</em></strong><a class="anchor-link" href="#Processing">&#182;</a></h4>
+<h4 id="Processing"><strong><em>Processing</em></strong><a class="anchor-link" href="#Processing"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
@@ -3452,7 +3452,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">,</span> <span class="s1">&#39;Description&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;StockCode&#39;</span><span class="p">)</span>
@@ -3481,7 +3481,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3548,13 +3548,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Prepare-for-LDA"><strong><em>Prepare for LDA</em></strong><a class="anchor-link" href="#Prepare-for-LDA">&#182;</a></h3>
+<h3 id="Prepare-for-LDA"><strong><em>Prepare for LDA</em></strong><a class="anchor-link" href="#Prepare-for-LDA"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">stock2dec_mapping</span> <span class="o">=</span> <span class="n">create_mapping</span><span class="p">(</span><span class="n">product_id</span><span class="o">.</span><span class="n">StockCode</span><span class="p">,</span> <span class="n">product_id</span><span class="o">.</span><span class="n">Description</span><span class="p">)</span>
@@ -3567,7 +3567,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">invoice_aslist</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">])[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
@@ -3585,7 +3585,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3651,7 +3651,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">id2word</span><span class="p">,</span> <span class="n">corpus</span> <span class="o">=</span> <span class="n">prepare_mapping</span><span class="p">(</span><span class="n">invoice_aslist</span><span class="o">.</span><span class="n">Products</span><span class="p">)</span>
@@ -3666,20 +3666,20 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.2-Applying-LDA">3.2 Applying LDA<a class="anchor-link" href="#3.2-Applying-LDA">&#182;</a></h2>
+<h2 id="3.2-Applying-LDA">3.2 Applying LDA<a class="anchor-link" href="#3.2-Applying-LDA"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.2.1-LDA(16)"><strong><em>3.2.1 LDA(16)</em></strong><a class="anchor-link" href="#3.2.1-LDA(16)">&#182;</a></h3>
+<h3 id="3.2.1-LDA(16)"><strong><em>3.2.1 LDA(16)</em></strong><a class="anchor-link" href="#3.2.1-LDA(16)"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">16</span>
@@ -3693,7 +3693,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_vis_df</span> <span class="o">=</span> <span class="n">get_lda_topics</span><span class="p">(</span><span class="n">lda_16</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -3710,7 +3710,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3860,7 +3860,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">visualize_topics</span><span class="p">(</span><span class="n">lda_16</span><span class="p">,</span> <span class="n">stopwords</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="o">=</span><span class="n">stock2dec_mapping</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -3895,7 +3895,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
@@ -3913,7 +3913,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -3970,20 +3970,20 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Other-values-of-num_topics">Other values of num_topics<a class="anchor-link" href="#Other-values-of-num_topics">&#182;</a></h3>
+<h3 id="Other-values-of-num_topics">Other values of num_topics<a class="anchor-link" href="#Other-values-of-num_topics"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="LDA(16)">LDA(16)<a class="anchor-link" href="#LDA(16)">&#182;</a></h5>
+<h5 id="LDA(16)">LDA(16)<a class="anchor-link" href="#LDA(16)"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">16</span>
@@ -3997,7 +3997,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_vis_df</span> <span class="o">=</span> <span class="n">get_lda_topics</span><span class="p">(</span><span class="n">lda_16</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -4014,7 +4014,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4164,7 +4164,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">visualize_topics</span><span class="p">(</span><span class="n">lda_16</span><span class="p">,</span> <span class="n">stopwords</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="o">=</span><span class="n">stock2dec_mapping</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -4199,7 +4199,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
@@ -4217,7 +4217,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4274,13 +4274,13 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="LDA(12)">LDA(12)<a class="anchor-link" href="#LDA(12)">&#182;</a></h5>
+<h5 id="LDA(12)">LDA(12)<a class="anchor-link" href="#LDA(12)"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">12</span>
@@ -4294,7 +4294,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_vis_df</span> <span class="o">=</span> <span class="n">get_lda_topics</span><span class="p">(</span><span class="n">lda_12</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -4311,7 +4311,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4437,7 +4437,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">visualize_topics</span><span class="p">(</span><span class="n">lda_12</span><span class="p">,</span> <span class="n">stopwords</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="o">=</span><span class="n">stock2dec_mapping</span><span class="p">,</span> <span class="n">n_col</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
@@ -4472,7 +4472,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
@@ -4490,7 +4490,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4547,13 +4547,13 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="LDA(8)">LDA(8)<a class="anchor-link" href="#LDA(8)">&#182;</a></h5>
+<h5 id="LDA(8)">LDA(8)<a class="anchor-link" href="#LDA(8)"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">8</span>
@@ -4567,7 +4567,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_vis_df</span> <span class="o">=</span> <span class="n">get_lda_topics</span><span class="p">(</span><span class="n">lda_8</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -4584,7 +4584,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4686,7 +4686,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">visualize_topics</span><span class="p">(</span><span class="n">lda_8</span><span class="p">,</span> <span class="n">stopwords</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="o">=</span><span class="n">stock2dec_mapping</span><span class="p">,</span> <span class="n">n_col</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -4721,7 +4721,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
@@ -4739,7 +4739,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4796,13 +4796,13 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="LDA(6)">LDA(6)<a class="anchor-link" href="#LDA(6)">&#182;</a></h5>
+<h5 id="LDA(6)">LDA(6)<a class="anchor-link" href="#LDA(6)"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_topics</span> <span class="o">=</span> <span class="mi">6</span>
@@ -4816,7 +4816,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_vis_df</span> <span class="o">=</span> <span class="n">get_lda_topics</span><span class="p">(</span><span class="n">lda_6</span><span class="p">,</span> <span class="n">num_topics</span><span class="p">,</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -4833,7 +4833,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4923,7 +4923,7 @@ if(typeof(LDAvis) !== "undefined"){
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pyLDAvis</span><span class="o">.</span><span class="n">enable_notebook</span><span class="p">()</span>
@@ -4941,7 +4941,7 @@ if(typeof(LDAvis) !== "undefined"){
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -4998,20 +4998,20 @@ if(typeof(LDAvis) !== "undefined"){
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.2.2-Probability-matrix-and-dataframe-shows-topics-of-words">3.2.2 Probability matrix and dataframe shows topics of words<a class="anchor-link" href="#3.2.2-Probability-matrix-and-dataframe-shows-topics-of-words">&#182;</a></h3>
+<h3 id="3.2.2-Probability-matrix-and-dataframe-shows-topics-of-words">3.2.2 Probability matrix and dataframe shows topics of words<a class="anchor-link" href="#3.2.2-Probability-matrix-and-dataframe-shows-topics-of-words"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Extract-product_prob"><strong><em>Extract product_prob</em></strong><a class="anchor-link" href="#Extract-product_prob">&#182;</a></h4>
+<h4 id="Extract-product_prob"><strong><em>Extract product_prob</em></strong><a class="anchor-link" href="#Extract-product_prob"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">minimum_probability</span> <span class="o">=</span> <span class="mf">1e-4</span>
@@ -5064,7 +5064,7 @@ Number of products with no topics:  631
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -5082,13 +5082,13 @@ Number of products with no topics:  631
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Create-productprob_df-from-prob_matrix"><strong><em>Create productprob_df from prob_matrix</em></strong><a class="anchor-link" href="#Create-productprob_df-from-prob_matrix">&#182;</a></h4>
+<h4 id="Create-productprob_df-from-prob_matrix"><strong><em>Create productprob_df from prob_matrix</em></strong><a class="anchor-link" href="#Create-productprob_df-from-prob_matrix"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">notopic_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">products_prob</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -5111,7 +5111,7 @@ Number of products with no topics:  631
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -5274,20 +5274,20 @@ Number of products with no topics:  631
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Overview-topics-on-purchases-products-and-users">Overview topics on purchases products and users<a class="anchor-link" href="#Overview-topics-on-purchases-products-and-users">&#182;</a></h2>
+<h2 id="Overview-topics-on-purchases-products-and-users">Overview topics on purchases products and users<a class="anchor-link" href="#Overview-topics-on-purchases-products-and-users"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="product-and-users-on-topics">product and users on topics<a class="anchor-link" href="#product-and-users-on-topics">&#182;</a></h4>
+<h4 id="product-and-users-on-topics">product and users on topics<a class="anchor-link" href="#product-and-users-on-topics"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;InvoiceNo&#39;</span><span class="p">,</span> <span class="s1">&#39;StockCode&#39;</span><span class="p">]],</span> <span class="n">productprob_df</span><span class="p">[[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">,</span> <span class="s1">&#39;Topic&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;StockCode&#39;</span><span class="p">)</span>
@@ -5341,7 +5341,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -5414,7 +5414,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_cnt</span> <span class="o">=</span> <span class="n">get_usercnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -5517,7 +5517,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">product_cnt</span> <span class="o">=</span> <span class="n">get_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -5553,7 +5553,7 @@ Number of products with no topics:  631
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -5586,7 +5586,7 @@ Number of products with no topics:  631
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Grouping-items-from-prob">Grouping items from prob<a class="anchor-link" href="#Grouping-items-from-prob">&#182;</a></h4>
+<h4 id="Grouping-items-from-prob">Grouping items from prob<a class="anchor-link" href="#Grouping-items-from-prob"></a></h4>
 </div>
 </div>
 </div>
@@ -5602,7 +5602,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;No-topic products: &#39;</span><span class="p">)</span>
@@ -5651,7 +5651,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Low-prob products: &#39;</span><span class="p">)</span>
@@ -5720,7 +5720,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Mid-prob products: &#39;</span><span class="p">)</span>
@@ -5789,7 +5789,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;High-prob products: &#39;</span><span class="p">)</span>
@@ -5849,13 +5849,13 @@ Number of products with no topics:  631
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Visualize-groups">Visualize groups<a class="anchor-link" href="#Visualize-groups">&#182;</a></h5>
+<h5 id="Visualize-groups">Visualize groups<a class="anchor-link" href="#Visualize-groups"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">visualize_topics_withprob</span><span class="p">(</span><span class="n">products_prob</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">product_id</span><span class="p">))))</span>
@@ -5901,7 +5901,7 @@ Number of products with no topics:  631
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;High-prob products&#39;</span><span class="p">)</span>
@@ -6008,13 +6008,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Compare-user-features-on-topics">Compare user features on topics<a class="anchor-link" href="#Compare-user-features-on-topics">&#182;</a></h4>
+<h4 id="Compare-user-features-on-topics">Compare user features on topics<a class="anchor-link" href="#Compare-user-features-on-topics"></a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">compare_userontopics</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">user_feature</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
@@ -6043,13 +6043,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="user_cnt">user_cnt<a class="anchor-link" href="#user_cnt">&#182;</a></h5>
+<h5 id="user_cnt">user_cnt<a class="anchor-link" href="#user_cnt"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">usercnt</span> <span class="o">=</span> <span class="n">get_usercnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -6117,13 +6117,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="user_prodcnt">user_prodcnt<a class="anchor-link" href="#user_prodcnt">&#182;</a></h5>
+<h5 id="user_prodcnt">user_prodcnt<a class="anchor-link" href="#user_prodcnt"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_productcnt</span> <span class="o">=</span> <span class="n">get_user_productcnt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -6191,13 +6191,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="avg_invoicelen">avg_invoicelen<a class="anchor-link" href="#avg_invoicelen">&#182;</a></h5>
+<h5 id="avg_invoicelen">avg_invoicelen<a class="anchor-link" href="#avg_invoicelen"></a></h5>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_invoicelen</span> <span class="o">=</span> <span class="n">get_user_invoicelen</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;avg_invoicelen&#39;</span><span class="p">)</span>
@@ -6265,20 +6265,20 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.-Recommend"><strong>4. Recommend</strong><a class="anchor-link" href="#4.-Recommend">&#182;</a></h1>
+<h1 id="4.-Recommend"><strong>4. Recommend</strong><a class="anchor-link" href="#4.-Recommend"></a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions">&#182;</a></h2>
+<h2 id="Functions"><strong><em>Functions</em></strong><a class="anchor-link" href="#Functions"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gettopidx_row</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">NTOP</span><span class="p">):</span>
@@ -6319,7 +6319,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">STOCK_CODEDES</span> <span class="o">=</span> <span class="p">(</span><span class="n">product_id</span><span class="o">.</span><span class="n">StockCode</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">stock2dec_mapping</span><span class="p">)</span>
@@ -6355,20 +6355,20 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Recommend-by-LDA-features">Recommend by LDA features<a class="anchor-link" href="#Recommend-by-LDA-features">&#182;</a></h2>
+<h2 id="Recommend-by-LDA-features">Recommend by LDA features<a class="anchor-link" href="#Recommend-by-LDA-features"></a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-Model"><strong><em>The Model</em></strong><a class="anchor-link" href="#The-Model">&#182;</a></h3>
+<h3 id="The-Model"><strong><em>The Model</em></strong><a class="anchor-link" href="#The-Model"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">LDA_REC</span><span class="p">(</span><span class="n">IndexStocks</span><span class="p">):</span>
@@ -6404,13 +6404,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Recommend-for-multi-topic-products">Recommend for multi-topic products<a class="anchor-link" href="#Recommend-for-multi-topic-products">&#182;</a></h3>
+<h3 id="Recommend-for-multi-topic-products">Recommend for multi-topic products<a class="anchor-link" href="#Recommend-for-multi-topic-products"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">lda_rec</span> <span class="o">=</span> <span class="n">LDA_REC</span><span class="p">(</span><span class="n">products_prob</span><span class="p">)</span>
@@ -6423,7 +6423,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23344&#39;</span><span class="p">,</span> <span class="s1">&#39;85123A&#39;</span><span class="p">,</span> <span class="s1">&#39;22989&#39;</span><span class="p">]</span>
@@ -6441,7 +6441,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -6629,7 +6629,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">start_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -6645,7 +6645,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -6765,7 +6765,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">rec_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -6781,7 +6781,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -7216,7 +7216,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_items</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;23344&#39;</span><span class="p">,</span> <span class="s1">&#39;85123A&#39;</span><span class="p">,</span> <span class="s1">&#39;22989&#39;</span><span class="p">]</span>
@@ -7234,7 +7234,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -7422,7 +7422,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">start_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -7438,7 +7438,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -7558,7 +7558,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">rec_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -7574,7 +7574,7 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -8010,13 +8010,13 @@ Milestones -20, -10 correspondingly are:  2.061153622438558e-09 4.53999297624848
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Reccommend-for-list-of-products-from-low/mid/high-group">Reccommend for list of products from low/mid/high group<a class="anchor-link" href="#Reccommend-for-list-of-products-from-low/mid/high-group">&#182;</a></h3>
+<h3 id="Reccommend-for-list-of-products-from-low/mid/high-group">Reccommend for list of products from low/mid/high group<a class="anchor-link" href="#Reccommend-for-list-of-products-from-low/mid/high-group"></a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">productprob_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">notopic_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lowprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">midprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">higprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">]])]</span>
@@ -8051,7 +8051,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -8192,7 +8192,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_items</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">StockCode</span>
@@ -8210,7 +8210,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -8446,7 +8446,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">rec_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -8462,7 +8462,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -9023,7 +9023,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span> 
@@ -9036,7 +9036,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">productprob_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">notopic_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lowprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">midprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">higprob_product</span><span class="p">[</span><span class="mi">0</span><span class="p">]])]</span>
@@ -9071,7 +9071,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -9212,7 +9212,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">start_items</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">StockCode</span>
@@ -9230,7 +9230,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
@@ -9466,7 +9466,7 @@ High-prob StockCode:  22633
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt"></div>
 <div class="inner_cell">
 		<div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">productprob_df</span><span class="p">[</span><span class="n">productprob_df</span><span class="p">[</span><span class="s1">&#39;StockCode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">rec_df</span><span class="o">.</span><span class="n">rec_code</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Topic&#39;</span><span class="p">)</span>
@@ -9482,7 +9482,7 @@ High-prob StockCode:  22633
 
 <div class="output_area">
 
-		<div class="prompt output_prompt">Out[&nbsp;]:</div>
+		<div class="prompt output_prompt"></div>
 
 
 
