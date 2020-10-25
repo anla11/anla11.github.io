@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Highliths
-permalink: /highlights/
+permalink: _pages/highlights/
 ---
 
 # Ping posts
