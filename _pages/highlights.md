@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Highlights
-permalink: /[page]/highlights/
+permalink: /[_pages]/highlights/
 ---
 
 ## Ping posts
