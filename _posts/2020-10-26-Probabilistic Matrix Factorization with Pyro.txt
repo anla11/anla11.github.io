@@ -1,4 +1,4 @@
 ---
 layout: post
-title: Probabilistic Factorization with Pyro
+title: Probabilistic Matrix Factorization with Pyro
 ---
