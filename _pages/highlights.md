@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Highliths
-permalink: _pages/highlights/
+permalink: /_pages/highlights/
 ---
 
-# Ping posts
+## Ping posts
 
   Example
 
-# Recently added
+## Recently added
 
   Example
