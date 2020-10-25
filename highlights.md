@@ -1,8 +1,8 @@
 ---
-layout: post
-title: Highlights
+layout: page
+title: Highliths
+permalink: /highlights/
 ---
-
 
 # Ping posts
   Example
