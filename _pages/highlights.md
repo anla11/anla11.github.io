@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Highliths
+title: Highlights
 permalink: /_pages/highlights/
 ---
 
