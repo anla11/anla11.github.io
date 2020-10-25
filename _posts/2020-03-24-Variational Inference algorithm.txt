@@ -1,0 +1,4 @@
+---
+layout: post
+title: Variational Inference Algorithm
+---
