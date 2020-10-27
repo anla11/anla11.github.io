@@ -5,7 +5,5 @@ permalink: /applying-lda/
 tags: lda
 ---
   
-<body style="margin:0px;padding:0px;overflow:hidden">
 <iframe src="https://nbviewer.jupyter.org/github/anla11/anla11.github.io/blob/5cd881f18fa01218a32e204ff4d8c2cf93e8ea4b/_posts/Online_Retail_Content_based_Recommmendation_with_LDA.ipynb"
-frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
-</body>
+frameborder="0" style="margin:0px;padding:0px;overflow:hidden;height:100%;width:100%"></iframe>
