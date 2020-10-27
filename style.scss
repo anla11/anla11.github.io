@@ -282,7 +282,6 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
-pre { white-space: pre; overflow: auto; }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
