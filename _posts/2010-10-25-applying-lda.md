@@ -2,8 +2,7 @@
 title: 'test'
 date: 2020-10-25
 permalink: /applying-lda/
-tags:
-  - heo
+tags: lda
 ---
   
 <iframe src="https://nbviewer.jupyter.org/github/anla11/anla11.github.io/blob/5cd881f18fa01218a32e204ff4d8c2cf93e8ea4b/_posts/Online_Retail_Content_based_Recommmendation_with_LDA.ipynb"
