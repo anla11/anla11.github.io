@@ -2,3 +2,624 @@
 layout: post
 title: Neural Algorithm of Artistic Style Transfer Understanding with PyTorch scripts
 ---
+
+<div class="entry-content">
+		
+<p style="font-size:18px;">Convolutional Neural Network brings several breakthroughs for supervised tasks in Computer Vision and other visual problems in Artificial Intelligence. Moreover, semi-supervised or unsupervised learning has remarkable milestones in attempts to understand how models work. These insights unfold impressive studies which utilitize pre-trained models to extract deep-learning-based features or solve various tasks. </p>
+
+
+
+<p style="font-size:18px;">This post introduces Artistic Style Transfer with Neural Algorithm as the typical method in such success. First, solving the object recognition problem with Convolutional Neural Network is presented, then Section 2 provides explanations of how it works by visualizing the pre-trained model. And the final is applying to reconstruct style and content of images. In addition, throughout sections, some experiments with PyTorch code are included.</p>
+
+
+
+<div style="height:30px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2>1. Object Recognition with Convolutional Neural Network</h2>
+
+
+
+<h3>1.1 Object Recognition</h3>
+
+
+
+<p style="font-size:18px;">Object recognition is a typical task in Artificial Intelligence. Supporting a wide range of applications but facing many challenges, there are a huge number of studies contributing to discovery of this topic. In academy, to officially validate the performance of methods, there is an online competition, called Image Classification with <a rel="noreferrer noopener" href="http://www.image-net.org/challenges/LSVRC/2012/" target="_blank">ImageNet</a> dataset. It provides large collection of pictures and their labels, includes various kinds of objects: animal, plant, scene, instrumentation, etc. From 2010, there are a few winning models with different architectures and strategies. All of them are Convolutional Neural Network.</p>
+
+
+
+<p style="font-size:18px;">Opening deep learning frameworks such as <a href="https://keras.io/applications/">Keras</a>, <a href="https://pytorch.org/docs/stable/torchvision/models.html">Pytorch</a>, prepare access to not only this dataset but also pre-trained CNN models.</p>
+
+
+
+<div style="height:20px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h3>1.2 Convolutional Neural Network</h3>
+
+
+
+<p style="font-size:18px;">Convolutional Neural Network is a popular deep learning model applied commonly in visual tasks. It is inspired by biological processes in the visual cortex of cats. There are two mechanisms: globally observing and locally focusing, which correspond to pooling and convolution operator. The name of this model indicates that it performs this mathematical operation.</p>
+
+
+
+<p style="font-size:18px;">Convolutional Neural Network includes several blocks. Each block contains 3 components: convolutions, non-linear activation function and pooling. Convolutions employ convolution operators between small areas of given data and k filters in parallel, produce k images simultaneously. Using the same input, the values of these images depend on values of filters. They are computed by training with labels in particular tasks. Next, the common activation function in CNN is ReLU. Finally, pooling summarizes local information of adjacent positions and generates the outputs with smaller size. For example, it gets the maximum of 2&#215;2 regions so that the image size reduces 2 times in height and 2 times in width.</p>
+
+
+
+<p style="font-size:18px;">After convolution blocks is the fully connected layer. The last layer is soft-max function, which normalizes all values to approximate probabilities of object labels.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-attachment-id="1510" data-permalink="https://langocthuyan.wordpress.com/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg" data-orig-size="600,344" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg?w=600" src="https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg?w=600" alt="" class="wp-image-1510" srcset="https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg 600w, https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/llustration-of-the-network-architecture-of-vgg-19-model-conv-means-convolution-fc-means-2.jpg?w=300 300w" sizes="(max-width: 600px) 100vw, 600px" /><figcaption><strong>Figure 1.1</strong>: Architecture of VGG19. It receives the input with size (224, 224, 3) corresponding to an image with width=224, height=224 and depth=3 for color channels RGB. The first layer includes 64 filters, each filter has the size 3&#215;3. After that, the maxpool summarizes for each 2&#215;2 region so that the outputs become 112&#215;112. Source: <a rel="noreferrer noopener" href="https://www.researchgate.net/publication/325137356_Breast_cancer_screening_using_convolutional_neural_network_and_follow-up_digital_mammography" target="_blank">https://www.researchgate.net/publication/325137356_Breast_cancer_screening_using_convolutional_neural_network_and_follow-up_digital_mammography</a></figcaption></figure></div>
+
+
+
+<p style="font-size:18px;">For more detail in Convolution Neural Network, please read this <a href="https://cs231n.github.io/convolutional-networks/"><strong><em>article</em></strong></a>.</p>
+
+
+
+<div style="height:20px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h3>1.3 Visualization of CNN models in object recognition task</h3>
+
+
+
+<p style="font-size:18px;">Deep learning models are reputed as black box, means we know the inputs, the labels, the weights learned as outcomes, but we have no idea how to explain the results. Fortunately, previous studies discovered ways visualizing CNN models, which help us in understanding and leveraging them better. Some simply show values of filters as images with short discussion, like relationship between filters or their values. Others visualize results of convolution operators between the input image and filters.</p>
+
+
+
+<p style="font-size:18px;">These figures below illustrates visualization of some filters of AlexNet and VGG19 and their results when feeding the input (figure 1.2).</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-attachment-id="1521" data-permalink="https://langocthuyan.wordpress.com/maru2-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg" data-orig-size="236,236" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="maru2-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg?w=236" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg?w=236" src="https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg?w=236" alt="" class="wp-image-1521" srcset="https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg 236w, https://langocthuyan.files.wordpress.com/2020/04/maru2-1.jpg?w=150 150w" sizes="(max-width: 236px) 100vw, 236px" /><figcaption>Figure 1.2: This is a photo of a famous dog, Maru Taro. I use it as input for models.</figcaption></figure></div>
+
+
+
+<p style="font-size:18px;">Structure of VGG19:</p>
+
+
+<pre class="brush: latex; gutter: false; title: ; notranslate" title="">
+Sequential(
+  (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (1): ReLU(inplace=True)
+  (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (3): ReLU(inplace=True)
+  (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (6): ReLU(inplace=True)
+  (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (8): ReLU(inplace=True)
+  (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (10): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (11): ReLU(inplace=True)
+  (12): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (13): ReLU(inplace=True)
+  (14): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (15): ReLU(inplace=True)
+  (16): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (17): ReLU(inplace=True)
+  (18): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (19): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (20): ReLU(inplace=True)
+  (21): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (22): ReLU(inplace=True)
+  (23): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (24): ReLU(inplace=True)
+  (25): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (26): ReLU(inplace=True)
+  (27): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (28): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (29): ReLU(inplace=True)
+  (30): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (31): ReLU(inplace=True)
+  (32): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (33): ReLU(inplace=True)
+  (34): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (35): ReLU(inplace=True)
+  (36): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+)
+</pre>
+
+
+<p style="font-size:18px;">Visualization for VGG19 is in figure 1.3 and figure 1.4. Its first layer has 64 filters. The 7th layer has 128 filters.</p>
+
+
+
+<div class="wp-block-columns alignwide">
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1520" data-permalink="https://langocthuyan.wordpress.com/vgg19_1st-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vgg19_1st-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=739" alt="" class="wp-image-1520" srcset="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption>Figure 1.3A VGG19: 64 filters of the first convolution layer</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1519" data-permalink="https://langocthuyan.wordpress.com/vgg19_1st_maru-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vgg19_1st_maru-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=739" alt="" class="wp-image-1519" srcset="https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_1st_maru-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption><em>Figure 1.3</em>B VGG19: After applying the first convolution layer</figcaption></figure>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns alignwide">
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1518" data-permalink="https://langocthuyan.wordpress.com/vgg19_7-1_maru-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vgg19_7-1_maru-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=739" alt="" class="wp-image-1518" srcset="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-1_maru-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption>Figure 1.4A VGG19: After applying the 7rd convolution layer (the first 64 filters)</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1517" data-permalink="https://langocthuyan.wordpress.com/vgg19_7-2_maru-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vgg19_7-2_maru-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=739" alt="" class="wp-image-1517" srcset="https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/vgg19_7-2_maru-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption>Figure 1.4A VGG19: After applying the 7rd convolution layer (the last 64 filters)</figcaption></figure>
+</div>
+</div>
+
+
+
+<p style="font-size:18px;">Visualization for AlexNet is in figure 1.5. Its first layer has 64 filters.</p>
+
+
+
+<div class="wp-block-columns alignwide">
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1516" data-permalink="https://langocthuyan.wordpress.com/alex_1st-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="alex_1st-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=739" alt="" class="wp-image-1516" srcset="https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption><em>Figure 1.5A</em> AlexNet: 64 filters of the first convolution layer</figcaption></figure>
+</div>
+
+
+
+<div class="wp-block-column">
+<figure class="wp-block-image size-large"><img data-attachment-id="1515" data-permalink="https://langocthuyan.wordpress.com/alex_1st_maru-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png" data-orig-size="1691,833" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="alex_1st_maru-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=739" alt="" class="wp-image-1515" srcset="https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=1478 1478w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/alex_1st_maru-1.png?w=1024 1024w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption><em>Figure 1.5B</em> AlexNet: After applying the first convolution layer</figcaption></figure>
+</div>
+</div>
+
+
+
+<p style="font-size:18px;">In PyTorch, it is very easy to access values of weights as well as their outputs. The script below shows how to load an image, models and extract these values in order to visualize models.</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+import torch
+import torchvision
+import torchvision.models as models
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+'''read image as numpy matrix with shape (72, 72, 3)'''
+datapath='maru.jpg'
+np_img = mpimg.imread(datapath)
+
+'''convert image from numpy to tensor with correct shape. 
+Tensor has shape (batch, channel, height, width)'''
+transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
+tensor_img = transform(np_img).float().resize_(1, 3, 72, 72)
+
+'''load pre-trained models'''
+vgg19 = models.vgg19(pretrained=True) #load VGG19
+alexnet = models.alexnet(pretrained=True) #load AlexNet
+
+'''access layers and outputs of pre-train models'''
+seq = vgg19.features #type: torch.nn.Sequential()
+weight_layer0 = seq[0].weight.data
+weight_layer10 = seq[10].weight.data
+output_layer0 = seq[0](tensor_img)
+output_layer10 = seq[0:11](tensor_img)
+output_final = seq(tensor_img)
+
+</pre>
+
+
+<div style="height:30px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2>2. Neural Algorithm of Artistic Style</h2>
+
+
+
+<p style="font-size:18px;">The algorithm leverages models pre-trained with the image classification task. It does not use the classifying step, but just weights of inner layers that transform inputs to probabilities of classes. It figures out information<em><span class="has-inline-color has-vivid-cyan-blue-color"> representing objects</span></em> of images. Furthermore, it extracts <em><span class="has-inline-color has-vivid-cyan-blue-color">abstract style</span></em> rather than visual features such as contrast, color, edges, etc, comparing to previous studies. That means the authors do not need to deal with challenges when conveying and fusing such meaningful information to computers. Instead, models could directly work with features. Then, the article shows how to<span class="has-inline-color has-vivid-cyan-blue-color"> <em>reconstruct individually the content and style</em></span> of images and even <em><span class="has-inline-color has-vivid-cyan-blue-color">re-combine them</span></em>. To prove this ability, the authors conducted experiments that re-drawn images with artistic style from famous paintings in art, called<em><span class="has-inline-color has-vivid-cyan-blue-color"> style transfer</span></em>.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-attachment-id="1536" data-permalink="https://langocthuyan.wordpress.com/2020/04/20/neural-algorithm-of-artistic-style-transfer-understanding-and-examples-with-pytorch/style_transfer/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png" data-orig-size="1189,362" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="style_transfer" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=1024" alt="" class="wp-image-1536" srcset="https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=1024 1024w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer.png 1189w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Figure 2.1 An example of style transfer: the left is the raw image, the middle is artistic image, and the right is the result generated.</figcaption></figure>
+
+
+
+<div style="height:20px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h3>2.1 Extract features of Content and Style</h3>
+
+
+
+<ul><li><strong><em>Content</em></strong> <strong><em>Extractor</em></strong></li></ul>
+
+
+
+<p style="font-size:18px;">After training with the classification task, CNN models can recognize objects in images. Due to their success in dealing with a wide range variation of object representation, pre-trained models are able to distinguish which information is related to objects or not. Some previous works also present methods that visualize which pixels or features have significant impacts on recognition results. Thus, it is appropriate to think that information of content is existed and can be captured as features from pre-trained models. According to the authors, it is the set of results of convolution layers. By experiments, they selected the second convolution layer of the forth block (conv4_2) to represent content of images.</p>
+
+
+
+<p style="font-size:18px;">To implement, I define a content extractor, inheriting <em>nn.Module</em> class of PyTorch. Check this <a rel="noreferrer noopener" href="https://pytorch.org/tutorials/beginner/examples_nn/two_layer_net_module.html" target="_blank"><em>link</em></a> to see how to custom <em>nn.Module</em>. Follow the description above, here is <em>Content_Extractor </em>class:</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+class Content_Extractor(torch.nn.Module):
+    def __init__(self, model):
+        super(Content_Extractor, self).__init__()
+        self.model = model
+        self.layers=[21] #[21] #conv4_2    
+    
+    def forward(self, x):
+        return [self.model.features[0:i+1](x) for i in self.layers]   
+
+content_extractor = Content_Extractor(vgg19) # a Content_Extractor instance
+</pre>
+
+
+<p style="font-size:18px;">In <em>forward </em>function, computing values of low-level layers over and over makes the time cost high. I adjust this by calculating the current layer from previous results as the script below:</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+def forward(self, x):
+    # return [self.model.features[0:i+1](x) for i in self.layers]
+    if len(self.layers) == 0:
+        return []
+    prev_layer = self.layers[0]
+    content = [self.model.features[0:self.layers[0]+1](x)]
+    for i in self.layers[1:]:
+        content.append(self.model.features[prev_layer+1:i+1](content[-1]))
+        prev_layer = i
+    return content    
+</pre>
+
+
+<ul><li><strong><em>Style</em></strong> <strong><em>Extractor</em></strong></li></ul>
+
+
+
+<p style="font-size:18px;">The authors suppose that style is constant with different filters in a layer. That is to say, how an image is drawn is global information like the content. Suffering different convolution filters, the image is transformed but still keeps the style consistent in different responses of a layer. Thus, obtaining style is achieved by getting correlation between them. The correlation is given by Gram matrix <img src="https://s0.wp.com/latex.php?latex=G&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="G" title="G" class="latex" />, where <img src="https://s0.wp.com/latex.php?latex=G_%7Bij%7D%5El&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="G_{ij}^l" title="G_{ij}^l" class="latex" /> is the inner product between the vector filter response <img src="https://s0.wp.com/latex.php?latex=i&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="i" title="i" class="latex" /> and <img src="https://s0.wp.com/latex.php?latex=j&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="j" title="j" class="latex" /> in layer <img src="https://s0.wp.com/latex.php?latex=l&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="l" title="l" class="latex" />:</p>
+
+
+
+<p class="has-text-align-center has-medium-font-size"><img src="https://s0.wp.com/latex.php?latex=G_%7Bij%7D%5El+%3D+%5Csum_k%7BF_%7Bik%7D%5El+F_%7Bkj%7D%5El%7D&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="G_{ij}^l = &#92;sum_k{F_{ik}^l F_{kj}^l}" title="G_{ij}^l = &#92;sum_k{F_{ik}^l F_{kj}^l}" class="latex" /></p>
+
+
+
+<p style="font-size:18px;">By experiments, the authors selected the the first convolution layer of each block (conv1_1, conv2_1, conv3_1, conv4_1, conv5_1) to represent style of images.</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+def gram_matrix(feature_map):
+    n_channel, n_filter, w, h = feature_map.shape
+    features = feature_map.view(n_channel * n_filter, w * h)
+    G = torch.mm(features, features.t())
+    return G.div(n_channel * n_filter * w * h) 
+
+class Style_Extractor(torch.nn.Module):
+    def __init__(self, model):
+        super(Style_Extractor, self).__init__()
+        self.model = model
+        self.layers= [0, 5, 10, 19, 28] #conv1_1, conv2_1, conv3_1, conv4_1, conv5_1
+
+    def forward(self, x):
+        # return [gram_matrix(self.model.features[0:i+1](x)) for i in self.layers]
+        if len(self.layers) == 0:
+            return []
+        prev_layer = self.layers[0]
+        cnn_layers = [self.model.features[0:self.layers[0]+1](x)]
+        for i in self.layers[1:]:
+            cnn_layers.append(self.model.features[prev_layer+1:i+1](cnn_layers[-1]))
+            prev_layer = i
+        style = []
+        for i in range(len(cnn_layers)):
+            style.append(gram_matrix(cnn_layers[i]))
+        return style    
+</pre>
+
+
+<div style="height:20px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h3>2.2 Loss of reconstruction</h3>
+
+
+
+<ul><li><strong><em>Content and Style reconstruction</em></strong></li></ul>
+
+
+
+<p style="font-size:18px;">To reconstruct content or style of an image, we start with a random image. Let say representation of original image and random image respectively are <img src="https://s0.wp.com/latex.php?latex=t&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="t" title="t" class="latex" /> and <img src="https://s0.wp.com/latex.php?latex=x&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="x" title="x" class="latex" />.  By content extractor and style extractor, we can capture their content and style. <img src="https://s0.wp.com/latex.php?latex=F_C%28u%2C+l%29&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="F_C(u, l)" title="F_C(u, l)" class="latex" /> and <img src="https://s0.wp.com/latex.php?latex=F_S%28u%2C+l%29&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="F_S(u, l)" title="F_S(u, l)" class="latex" /> is content feature and style feature of image <img src="https://s0.wp.com/latex.php?latex=u&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="u" title="u" class="latex" /> at layer <img src="https://s0.wp.com/latex.php?latex=l&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="l" title="l" class="latex" />. To measure the efficiency of reconstruction, we compute the loss function:</p>
+
+
+
+<p class="has-text-align-center has-medium-font-size"><img src="https://s0.wp.com/latex.php?latex=L%28t%2C+x%2C+l%29+%3D+%5Cdfrac%7B1%7D%7B2%7D+%5Csum+%5Cbigg%28F%28t%2C+l%29+-+F%28x%2Cl%29%5Cbigg%29%5E2&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="L(t, x, l) = &#92;dfrac{1}{2} &#92;sum &#92;bigg(F(t, l) - F(x,l)&#92;bigg)^2" title="L(t, x, l) = &#92;dfrac{1}{2} &#92;sum &#92;bigg(F(t, l) - F(x,l)&#92;bigg)^2" class="latex" /></p>
+
+
+
+<p style="font-size:18px;">This is also called mean square error (MSE) between <img src="https://s0.wp.com/latex.php?latex=t&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="t" title="t" class="latex" /> and <img src="https://s0.wp.com/latex.php?latex=x&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="x" title="x" class="latex" /> in layer <img src="https://s0.wp.com/latex.php?latex=l&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="l" title="l" class="latex" />, with <img src="https://s0.wp.com/latex.php?latex=F&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="F" title="F" class="latex" /> is <img src="https://s0.wp.com/latex.php?latex=F_C&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="F_C" title="F_C" class="latex" /> or <img src="https://s0.wp.com/latex.php?latex=F_S&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="F_S" title="F_S" class="latex" /> depending on the target information is content or style. The total loss is summing with weights over selected layers:</p>
+
+
+
+<p class="has-text-align-center has-medium-font-size"><img src="https://s0.wp.com/latex.php?latex=L%28t%2C+x%29+%3D+%5Csum_l%7Bw_l+L%28t%2Cx%2Cl%29%7D&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="L(t, x) = &#92;sum_l{w_l L(t,x,l)}" title="L(t, x) = &#92;sum_l{w_l L(t,x,l)}" class="latex" /></p>
+
+
+
+<p style="font-size:18px;">Reconstructing style or content becomes minimizing the total loss. It can be done normally by gradient descent algorithms. </p>
+
+
+
+<p>Here I define the loss of reconstruction as a class in PyTorch:</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+class Reconstruction_Loss(torch.nn.Module):
+    def __init__(self, extractor, target_img):
+        super(Reconstruction_Loss, self).__init__()   
+        self.extractor = extractor
+        target_tensor = target_img
+        self.target = [l.detach() for l in self.extractor(target_tensor)]
+
+    def forward(self, x):
+        F = self.extractor(x)
+        loss_list =[torch.nn.functional.mse_loss(F[l], self.target[l]) \
+                        for l in range(len(self.extractor.layers))]
+        total_loss=0
+        for loss in loss_list:
+            total_loss += loss
+        return total_loss
+</pre>
+
+
+<p style="font-size:18px;">Use the class with <em>Content_Extractor</em> or <em>Style_Extractor</em>, we obtain a model to reconstruct content or style respectively. To train this model, I define a reconstruct function below. Check this<em> <a rel="noreferrer noopener" href="https://pytorch.org/tutorials/beginner/examples_nn/two_layer_net_optim.html" target="_blank">li</a></em><a rel="noreferrer noopener" href="https://pytorch.org/tutorials/beginner/examples_nn/two_layer_net_optim.html" target="_blank"><em>nk</em></a> if you are not familiar with training PyTorch models.</p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+def reconstruct(model, target, epochs):
+	img = torch.rand(target.shape).requires_grad_(True)
+	optimizer = torch.optim.Adam([img], lr=0.1)
+	for epoch in range(epochs):
+		img.data.clamp_(0, 1)
+		optimizer.zero_grad()
+		loss = model(img)
+		loss.backward()
+		optimizer.step()
+		if (epoch==0 or epoch % 100==99):
+			print ('Epoch %d: Loss=%.4f' % (epoch, loss))
+	img.data.clamp_(0, 1)
+	return img   
+</pre>
+
+
+<p style="font-size:18px;">Before running these code, we need</p>
+
+
+
+<ul><li>prepare tensor variables for input images and results. </li><li>turn off using gradients for pre-trained model. </li><li>declare a content or style model by using <em>Reconstruct_Loss </em>and <em>Content_Extractor </em>or <em>Style_Extractor</em>.</li></ul>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+def convert_tensortonp(tensor_img):
+    return np.stack([tensor_img.data[0, 0, :, :].numpy(), \
+                     tensor_img.data[0, 1, :, :].numpy(), \
+                     tensor_img.data[0, 2, :, :].numpy()], axis = 2)
+
+def convert_totensorimg(np_img, requires_grad=False):
+    w, h, c = np_img.shape
+    tensor_img = torch.tensor(transform(np_img).float().resize_(1, c, w, h),\
+                            dtype=torch.float32, requires_grad=requires_grad)
+    return tensor_img
+
+import copy
+vgg19 = copy.deepcopy(models.vgg19(pretrained=True))
+for param in vgg19.parameters():
+    param.requires_grad_(False)
+
+target_tensor = convert_totensorimg(maru_img, requires_grad=False).to(device)
+model = Reconstruction_Loss(Content_Extractor(vgg19), target)
+</pre>
+
+
+<p style="font-size:18px;">Finally, call the reconstruction and see what happen:</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-attachment-id="1597" data-permalink="https://langocthuyan.wordpress.com/image-2-3/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/image-2.png" data-orig-size="952,546" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="image-2" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=952" alt="" class="wp-image-1597" srcset="https://langocthuyan.files.wordpress.com/2020/04/image-2.png 952w, https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/image-2.png?w=768 768w" sizes="(max-width: 952px) 100vw, 952px" /><figcaption>Figure 2.2: Examples of content reconstruction for Maru (left) and style reconstruction for Starry Night (right).</figcaption></figure>
+
+
+
+<ul><li><strong><em><strong><em>Style Transfer</em></strong></em></strong></li></ul>
+
+
+
+<p style="font-size:18px;">Similar to content and style reconstruction but not individually, style transfer strives to minimizing both of them simultaneously. The loss is sum with weights of content and style, where the ratio between content and style often is <img src="https://s0.wp.com/latex.php?latex=1%3A10%5E5&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="1:10^5" title="1:10^5" class="latex" />.</p>
+
+
+
+<p class="has-text-align-center" style="font-size:18px;"><img src="https://s0.wp.com/latex.php?latex=L_%7Btrans%7D+%3D+L_c+%2A+w_c+%2B+L_s+%2Aw_s&#038;bg=ffffff&#038;fg=404040&#038;s=0&#038;c=20201002" alt="L_{trans} = L_c * w_c + L_s *w_s" title="L_{trans} = L_c * w_c + L_s *w_s" class="latex" /></p>
+
+
+
+<p style="font-size:18px;">In implementation, I define a class <em>Style_Transfer_Loss</em> to compute this loss. As <em>Reconstruction_Loss</em>, it contains instance of <em>Content_Extractor </em>or <em>Style_Extractor</em>. Running each of them need visiting layers in <em>vgg19 </em>once. Instead of running the <em>vgg19 </em>twice in total, for content and style separately, I create a new model for <em>Style_Transfer_Loss</em> from the original by the function <em>create_styletransfer_model</em>. </p>
+
+
+
+<p style="font-size:18px;">Modify the original model:</p>
+
+
+
+<ul><li>For short, create 2 objects: <em>Content_Loss </em>(from <em>Content_Extractor </em>and <em>Reconstruction_Loss</em>) and <em>Style_Loss </em>(from <em>Style_Extractor </em>and <em>Reconstruction_Loss</em>).</li><li>Add instances of <em>Content_Loss </em>and <em>Style_Loss </em>objects after appropriate convolution layers.</li><li>According to the article, changing <em>pooling </em>from <em>max </em>to <em>average </em>improves the gradient flows.</li><li>Current <em>ReLU </em>function use <em>inplace=True </em>in their setting, which means assigning directly new values to current variables. Changing <em>inplace=False</em> lets the model create new variables to store new values, make better performance when computing gradients.</li><li>Drop redundant layers.</li></ul>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+from torch import nn
+def create_styletransfer_model(self, content_tensor, style_tensor, \
+                                      content_layers, style_layers):
+    layer_cnt = 0
+    seq = nn.Sequential()   
+    for layer in vgg19.features:
+        if isinstance(layer, nn.MaxPool2d):
+            layer = nn.AvgPool2d(kernel_size=2, stride=2)
+        elif isinstance(layer, nn.ReLU):
+            layer = nn.ReLU(inplace=False)
+        seq.add_module('{}'.format(layer_cnt), layer)
+        if isinstance(layer, nn.Conv2d):
+            if layer_cnt in content_layers:
+                target = vgg19.features[:layer_cnt+1](content_tensor).detach()
+                content_loss = Content_Loss(target)
+                seq.add_module(&quot;ContentLoss_{}&quot;.format(layer_cnt), content_loss)
+                self.content_loss_list.append(content_loss)
+            if layer_cnt in style_layers:
+                target = vgg19.features[:layer_cnt+1](style_tensor).detach()
+                style_loss = Style_Loss(target)
+                seq.add_module(&quot;StyleLoss_{}&quot;.format(layer_cnt), style_loss)
+                self.style_loss_list.append(style_loss)
+        layer_cnt +=1
+        if (len(content_layers)==0 or layer_cnt&gt;content_layers[-1]) \
+            and (len(style_layers)==0 or layer_cnt&gt;style_layers[-1]):
+            break
+    return seq
+</pre>
+
+
+<p style="font-size:18px;">With configuration content_layer = [7] (conv2_2),&nbsp;style_layer=[0,&nbsp;5,&nbsp;10] (conv1_1, conv2_1, conv3_1), the model of <em>Style_Transfer_Loss</em>:</p>
+
+
+<pre class="brush: latex; gutter: false; title: ; notranslate" title="">
+Style_Transfer_Loss(
+  (model): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (StyleLoss_0): Style_Loss()
+    (1): ReLU()
+    (2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU()
+    (4): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (5): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (StyleLoss_5): Style_Loss()
+    (6): ReLU()
+    (7): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (ContentLoss_7): Content_Loss()
+    (8): ReLU()
+    (9): AvgPool2d(kernel_size=2, stride=2, padding=0)
+    (10): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (StyleLoss_10): Style_Loss()
+  )
+)
+</pre>
+
+
+<p style="font-size:18px;">Here is the detail of <em>Style_Transfer</em>_<em>Loss</em>. </p>
+
+
+<pre class="brush: python; title: ; notranslate" title="">
+CONFIG_CONTENT_LAYERS, CONFIG_STYLE_LAYER = [21], [0, 5, 10, 19, 28]
+CONFIG_WEIGHT_STYLE = [0.2, 0.2, 0.2, 0.05, 0.35]
+
+class Style_Transfer_Loss(nn.Module):
+    def __init__(self, content_tensor, style_tensor):
+        super(Style_Transfer_Loss, self).__init__()
+        #hyper-parameters
+        self.content_weight, self.style_weight = 1, 1e5
+        self.content_loss_list, self.style_loss_list = [], [], []
+        self.content_layers = CONFIG_CONTENT_LAYERS
+        self.style_layers = CONFIG_STYLE_LAYER
+        self.weight_style_list = CONFIG_WEIGHT_STYLE
+        #init
+        self.content_loss, self.style_loss = 1e8, 1e8
+        self.create_model = create_styletransfer_model
+        seq = self.create_model(self, content_tensor, style_tensor, \
+                               self.content_layers, self.style_layers)
+        self.model = seq.to(device)
+
+    def forward(self, x):
+        L_content, L_style = 0, 0
+        self.model(x) 
+        for l in self.content_loss_list:
+            L_content += l.loss
+        for i in range(len(self.style_loss_list)):
+            l = self.style_loss_list[i]
+            w = self.weight_style_list[i]
+            L_style += l.loss * w
+        self.content_loss = L_content * self.content_weight
+        self.style_loss = L_style * self.style_weight
+        self.loss = self.content_loss + self.style_loss
+        return self.loss  
+</pre>
+
+
+<div style="height:30px;" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<h2>3. Experiements with Style Transfer</h2>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img data-attachment-id="1507" data-permalink="https://langocthuyan.wordpress.com/style_transfer_demo-2/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg" data-orig-size="588,580" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="style_transfer_demo-2" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg?w=588" src="https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg?w=588" alt="" class="wp-image-1507" srcset="https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg 588w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/style_transfer_demo-2.jpg?w=300 300w" sizes="(max-width: 588px) 100vw, 588px" /><figcaption>Figure 3.1 Raw images of content image (the top) and style images (the bottom). The Rain Princess (the bottom left) is identified as colorful blurred pieces, while the Starry Night (the bottom right) is special with waves in the sky and inside objects.</figcaption></figure></div>
+
+
+
+<p style="font-size:18px;">Let have some experiments with the photo of the village as the content, and two famous artistic paintings Rain Princess and Starry Night as style images. Outputs are expected as <span class="has-inline-color has-vivid-cyan-blue-color"><em>keeping the global object arrangement</em></span> as the content but these objects are <em><span class="has-inline-color has-vivid-cyan-blue-color">drawn by texture as the style</span></em>, such as colorful and glossy pieces in the Rain Princess or blue waves in Starry Night.</p>
+
+
+
+<ul><li><strong>Size</strong> <strong>of content image</strong></li></ul>
+
+
+
+<p style="font-size:18px;">Size of input is a simple but important configuration parameter. With small enough value, we can both observe results and have fast running time. With high value, the effect of style is more detail and complex, but may take much longer time to complete the training step.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-attachment-id="1509" data-permalink="https://langocthuyan.wordpress.com/style_resize-256-512_light-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png" data-orig-size="860,582" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="style_resize-256-512_light-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=739" alt="" class="wp-image-1509" srcset="https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/style_resize-256-512_light-1.png 860w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption>Figure 3.2 Experiments with different sizes of content image: the left is 256 and the right is 512. Other configuration is the same.</figcaption></figure>
+
+
+
+<ul><li><strong>Convolution Layer for Content and Style Configuration</strong></li></ul>
+
+
+
+<p style="font-size:18px;">Different layer contains different types of visual information of style. According to the paper and my experiences, low-level layers are related more to color, contrast; the middle could capture edges, movements of artists when drawing; high-level layers is more sophisticated, mixing previous information to form abstract features.</p>
+
+
+
+<p style="font-size:18px;">In some cases, the loss of convolution layers in block 4 is very high. Removing this imbalance can be achieved by keeping their weights small.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-attachment-id="1508" data-permalink="https://langocthuyan.wordpress.com/style_layer-0_10_19_28_light-1/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png" data-orig-size="860,582" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="style_layer-0_10_19_28_light-1" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=739" alt="" class="wp-image-1508" srcset="https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/style_layer-0_10_19_28_light-1.png 860w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption><em>Figure 3.3 Experiments with different convolution layer in style extractor. </em>The top left: [conv1_1], the top right: [conv3_1], the bottom left: [conv4_1], the bottom right: [conv5_1]. All pictures are generated from content image with size=(512, 512).</figcaption></figure>
+
+
+
+<p style="font-size:18px;">Setting with combination of configuration and running with full size of content image, images generated have more sophisticated patterns with smooth coloring and thick texture.</p>
+
+
+
+<figure class="wp-block-image alignwide size-large"><img data-attachment-id="1506" data-permalink="https://langocthuyan.wordpress.com/c1s1-4/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg" data-orig-size="1006,406" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="c1s1-4" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=739" alt="" class="wp-image-1506" srcset="https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=739 739w, https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/c1s1-4.jpg 1006w" sizes="(max-width: 739px) 100vw, 739px" /><figcaption><em>Figure 3.4 Experiments with different combinations of convolution layers in style extractor. The left: [conv1_1, conv2_1], the right: [conv2_1, conv3_1]. All pictures are generated from the content image with full size. Comparing to the smaller size (figure 3.3), the pattern of glossy pieces is weaker in the texture of the generated image (the right).</em></figcaption></figure>
+
+
+
+<figure class="wp-block-image alignwide size-large"><img data-attachment-id="1525" data-permalink="https://langocthuyan.wordpress.com/2020/04/20/neural-algorithm-of-artistic-style-transfer-understanding-and-examples-with-pytorch/c1s2/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg" data-orig-size="1008,408" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="c1s2" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=1008" alt="" class="wp-image-1525" srcset="https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg 1008w, https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/c1s2-5.jpg?w=768 768w" sizes="(max-width: 1008px) 100vw, 1008px" /><figcaption><em><em>Figure 3.5 Experiments with different combinations of convolution layers in style extractor. The left: [conv1_1, conv2_1], the right: [conv2_1, conv3_1]. All pictures are generated from the content image with full size. Comparing to the smaller size (figure 3.3), the pattern of blue waves is thicker in the texture of the generated image (the right).</em></em></figcaption></figure>
+
+
+
+<p style="font-size:18px;">Other results for other content images (the left): using Rain Princess is the middle and the right is combining style of Starry Night.</p>
+
+
+
+<figure class="wp-block-image alignfull size-large"><img data-attachment-id="1640" data-permalink="https://langocthuyan.wordpress.com/2020/04/20/neural-algorithm-of-artistic-style-transfer-understanding-and-examples-with-pytorch/city_all/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg" data-orig-size="1925,487" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="city_all" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=1024" alt="" class="wp-image-1640" srcset="https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=1024 1024w, https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/city_all.jpg 1925w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image alignfull size-large"><img data-attachment-id="1649" data-permalink="https://langocthuyan.wordpress.com/2020/04/20/neural-algorithm-of-artistic-style-transfer-understanding-and-examples-with-pytorch/br_all/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg" data-orig-size="1925,491" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="br_all" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=1024" alt="" class="wp-image-1649" srcset="https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=1024 1024w, https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/br_all.jpg 1925w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<figure class="wp-block-image alignfull size-large"><img data-attachment-id="1641" data-permalink="https://langocthuyan.wordpress.com/2020/04/20/neural-algorithm-of-artistic-style-transfer-understanding-and-examples-with-pytorch/bf_all/" data-orig-file="https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg" data-orig-size="1925,487" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="bf_all" data-image-description="" data-medium-file="https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=300" data-large-file="https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=739" src="https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=1024" alt="" class="wp-image-1641" srcset="https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=1024 1024w, https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=150 150w, https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=300 300w, https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg?w=768 768w, https://langocthuyan.files.wordpress.com/2020/04/bf_all.jpg 1925w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+</div></div>			</div><!-- .entry-content -->
