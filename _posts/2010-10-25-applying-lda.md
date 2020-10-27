@@ -1,5 +1,5 @@
 ---
-title: 'test'
+title: 'Applying Topic Modelling to Content-based Recommender Systems'
 date: 2020-10-25
 permalink: /applying-lda/
 tags: lda
