@@ -11,4 +11,4 @@ permalink: /about/
 
 [langocthuyan@gmail.com](mailto:langocthuyan@gmail.com)
 
-Check out my git: [github.com/anla11](github.com/anla11)
+Check out my git: [github.com/anla11](https://github.com/anla11)
